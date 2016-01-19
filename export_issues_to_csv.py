@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Generate CSV of OpenElection's open Github issues.
+Generate CSV of open Github issues for OpenElections
 
 USAGE:
     # Create a Github API token and set the GITHUB_API_TOKEN environment 
@@ -14,7 +14,7 @@ import csv
 import os
 import sys
 
-from github3 import login, organization
+from github3 import login
 
 
 try:
