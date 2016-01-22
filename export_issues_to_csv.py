@@ -11,6 +11,7 @@ USAGE:
 
 """
 import csv
+import datetime
 import os
 import sys
 
@@ -42,10 +43,11 @@ def build_row_for_export(repo, issue, headers):
 
 def main():
     headers = ('repo','issue_num','title','labels', 'url', 'created', 'updated')
-    outfile = 'reports/openelex_issues.csv'
+    timestamp = datetime.date.today().isoformat()
+    outfile = 'reports/openelex_issues_{}.csv'.format(timestamp)
     with open(outfile, 'wb') as report:
         print "Creating {}...".format(outfile)
-        writer = csv.DictWriter(report, fieldnames=headers)
+        writer = csv.DictWriter(report, fieldnames=headers, quoting=csv.QUOTE_ALL)
         writer.writeheader()
         for repo in repos():
             print "Compiling issues for {}...".format(repo.name)
